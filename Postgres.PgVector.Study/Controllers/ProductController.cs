@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Pgvector;
+using Pgvector.EntityFrameworkCore;
 using Postgres.PgVector.Study.Context;
 using Postgres.PgVector.Study.Models;
 using Postgres.PgVector.Study.Services;
@@ -37,5 +39,18 @@ public class ProductController
         await _context.SaveChangesAsync();
 
         return Results.Ok();
+    }
+
+    [HttpGet("{text}")]
+    public async Task<IResult> SearchAsync(string text, [FromServices] OllamaEmbedingService ollamaService)
+    {
+        var embeddings = await ollamaService.GenerateEmbeddingsAsync(text);
+        var vector = new Vector(embeddings);
+
+        var result = await _context.Products
+            .Where(p => p.Embeddings!.CosineDistance(vector) <= .20)
+            .ToListAsync();
+
+        return Results.Ok(result);
     }
 }
