@@ -1,0 +1,6 @@
+@Postgres.PgVector.Study_HostAddress = http://localhost:5157
+
+GET {{Postgres.PgVector.Study_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
