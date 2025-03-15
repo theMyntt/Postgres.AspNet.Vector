@@ -16,7 +16,7 @@ public class Program
         // Add services to the container.
         builder.Services.AddDbContext<DatabaseContext>(options =>
         {
-            options.UseNpgsql(connectionString);
+            options.UseNpgsql(connectionString, o => o.UseVector());
         });
         
         builder.Services.AddControllers();

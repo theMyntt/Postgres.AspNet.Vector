@@ -1,4 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
+using Pgvector;
 
 namespace Postgres.PgVector.Study.Models;
 
@@ -10,6 +12,6 @@ public class ProductModel
     public string Description { get; set; } = string.Empty;
     public double Price { get; set; }
     
-    [Column(TypeName = "vector(768)")]
-    public float[] Embeddings { get; set; } = [];
+    [JsonIgnore]
+    public Vector? Embeddings { get; set; }
 }
