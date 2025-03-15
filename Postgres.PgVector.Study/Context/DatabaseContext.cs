@@ -16,7 +16,7 @@ public class DatabaseContext(DbContextOptions options) : DbContext(options)
         {
             builder
                 .Property(p => p.Embeddings)
-                .HasColumnType("vector(768)");
+                .HasColumnType("vector(1024)");
 
             builder
                 .HasIndex(_ => _.Embeddings)

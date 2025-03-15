@@ -23,7 +23,7 @@ namespace Postgres.PgVector.Study.Migrations
                     Name = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<double>(type: "double precision", nullable: false),
-                    Embeddings = table.Column<Vector>(type: "vector(768)", nullable: true)
+                    Embeddings = table.Column<Vector>(type: "vector(1024)", nullable: true)
                 },
                 constraints: table =>
                 {

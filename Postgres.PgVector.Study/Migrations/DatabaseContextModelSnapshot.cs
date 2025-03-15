@@ -35,7 +35,7 @@ namespace Postgres.PgVector.Study.Migrations
                         .HasColumnType("text");
 
                     b.Property<Vector>("Embeddings")
-                        .HasColumnType("vector(768)");
+                        .HasColumnType("vector(1024)");
 
                     b.Property<string>("Name")
                         .IsRequired()

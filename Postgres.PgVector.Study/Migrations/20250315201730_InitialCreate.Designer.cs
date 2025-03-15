@@ -13,7 +13,7 @@ using Postgres.PgVector.Study.Context;
 namespace Postgres.PgVector.Study.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250315195508_InitialCreate")]
+    [Migration("20250315201730_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -38,7 +38,7 @@ namespace Postgres.PgVector.Study.Migrations
                         .HasColumnType("text");
 
                     b.Property<Vector>("Embeddings")
-                        .HasColumnType("vector(768)");
+                        .HasColumnType("vector(1024)");
 
                     b.Property<string>("Name")
                         .IsRequired()
